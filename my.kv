@@ -1,0 +1,354 @@
+<CreateAccountWindow>:
+    name: "create"
+
+    namee: namee
+    email: email
+    password: passw
+
+    FloatLayout:
+        cols:1
+        canvas:
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        FloatLayout:
+            canvas:
+                Color:
+                    rgba: 0, 0, 1, .5
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            MDLabel:
+                text: "Create an Account"
+                size_hint: 0.3, 0.2
+                pos_hint: {"x":0.1, "top":1}
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+            MDLabel:
+                size_hint: 0.5,0.12
+                pos_hint: {"x":0.2, "top":0.8}
+                text: "Name: "
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+            MDTextField:
+                mode: "fill"
+                fill_color: 0, 0, 0.2, .2
+                line_color_focus: 0, 0, 0.2, 1
+                color_mode: 'custom'
+                pos_hint: {"x":0.5, "top":0.8}
+                icon_right: "account-edit"
+                size_hint: 0.4, 0.12
+                id: namee
+                hint_text: "Enter New User Name"
+                multiline: False
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+            MDLabel:
+                size_hint: 0.5,0.12
+                pos_hint: {"x":0.2, "top":0.8-0.13}
+                text: "Email: "
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+            MDTextField:
+                mode: "fill"
+                fill_color: 0, 0, 0.2, .2
+                line_color_focus: 0, 0, 0.2, 1
+                color_mode: 'custom'
+                pos_hint: {"x":0.5, "top":0.8-0.13}
+                icon_right: "email"
+                size_hint: 0.4, 0.12
+                id: email
+                hint_text: "@gmail.com"
+                multiline: False
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+            MDLabel:
+                size_hint: 0.5,0.12
+                pos_hint: {"x":0.2, "top":0.8-0.13*2}
+                text: "Password: "
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+            MDTextField:
+                mode: "fill"
+                fill_color: 0, 0, 0.2, .2
+                line_color_focus: 0, 0, 0.2, 1
+                color_mode: 'custom'
+                hint_text: "Enter the new password"
+                icon_right: "lock"
+                pos_hint: {"x":0.5, "top":0.8-0.13*2}
+                size_hint: 0.4, 0.12
+                id: passw
+                multiline: False
+                password: True
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+        MDFillRoundFlatIconButton:
+            icon: "account-arrow-left"
+            text_color: 1, 1, 1, 1
+            pos_hint:{"x":0.3,"y":0.25}
+            size_hint: 0.4, 0.1
+            font_size: (root.width**2 + root.height**2) / 17**4
+            text: "Already have an Account? Log In"
+            on_release:
+                root.manager.transition.direction = "left"
+                root.login()
+
+        MDFillRoundFlatIconButton:
+            icon: "account-check"
+            text_color: 1, 1, 1, 1
+            pos_hint:{"x":0.2,"y":0.05}
+            size_hint: 0.6, 0.15
+            text: "Submit"
+            font_size: (root.width**2 + root.height**2) / 14**4
+            on_release:
+                root.manager.transition.direction = "left"
+                root.submit()
+
+
+<LoginWindow>:
+    name: "login"
+
+    email: email
+    password: password
+
+    FloatLayout:
+        canvas:
+            Color:
+                rgba: 0, 0, 1, .5
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        MDLabel:
+            text:"Email: "
+            font_size: (root.width**2 + root.height**2) / 13**4
+            pos_hint: {"x":0.1, "top":0.9}
+            size_hint: 0.35, 0.15
+
+        MDTextField:
+            id: email
+            mode: "fill"
+            line_color_focus: 0, 0, 0.2, 1
+            fill_color: 0, 0, 1, .2
+            color_mode: 'custom'
+            icon_right: "email"
+            hint_text: "example@gmail.com"
+            font_size: (root.width**2 + root.height**2) / 13**4
+            multiline: False
+            pos_hint: {"x": 0.45 , "top":0.9}
+            size_hint: 0.4, 0.15
+
+        MDLabel:
+            text:"Password: "
+            font_size: (root.width**2 + root.height**2) / 13**4
+            pos_hint: {"x":0.1, "top":0.7}
+            size_hint: 0.35, 0.15
+
+        MDTextField:
+            mode: "fill"
+            fill_color: 0, 0, 1, .2
+            line_color_focus: 0, 0, 0.2, 1
+            color_mode: 'custom'
+            id: password
+            icon_right: "lock"
+            hint_text: "Enter the Password"
+            font_size: (root.width**2 + root.height**2) / 13**4
+            multiline: False
+            password: True
+            pos_hint: {"x": 0.45, "top":0.7}
+            size_hint: 0.4, 0.15
+
+        MDFillRoundFlatIconButton:
+            icon: "login"
+            text_color : 1,1,1,1
+            pos_hint:{"x":0.2,"y":0.05}
+            size_hint: 0.6, 0.2
+            font_size: (root.width**2 + root.height**2) / 13**4
+            text: "Login"
+            on_release:
+                root.manager.transition.direction = "up"
+                root.loginBtn()
+
+        MDFillRoundFlatIconButton:
+            icon: "account-plus"
+            text_color: 1, 1, 1, 1
+            pos_hint:{"x":0.3,"y":0.3}
+            size_hint: 0.4, 0.1
+            font_size: (root.width**2 + root.height**2) / 17**4
+            text: "Don't have an Account? Create One"
+            on_release:
+                root.manager.transition.direction = "right"
+                root.createBtn()
+
+
+<MainWindow>:
+    searchItem : searchItem
+    noItems : noItems
+    search_Item : searchItem.text
+    no_Items : noItems.text
+    FloatLayout:
+        canvas.before:
+            Color:
+                rgba: 0, 0, 1, .5
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        MDLabel:
+            text: "Enter the search term: "
+            font_size: (root.width ** 2 + root.height ** 2) / 14 ** 4
+            pos_hint: {"x": 0.1, "top": 0.9}
+            size_hint: 0.35, 0.15
+
+        MDTextField:
+            mode: "fill"
+            fill_color: 0, 0, 1, .2
+            line_color_focus: 0, 0, 0.2, 1
+            color_mode: 'custom'
+            id: searchItem
+            icon_right: "twitter-box"
+            font_size: (root.width ** 2 + root.height ** 2) / 13 ** 4
+            multiline: False
+            pos_hint: {"x": 0.45, "top": 0.9}
+            size_hint: 0.4, 0.15
+
+        MDLabel:
+            text: "Number of items "
+            font_size: (root.width ** 2 + root.height ** 2) / 15 ** 4
+            pos_hint: {"x": 0.1, "top": 0.7}
+            size_hint: 0.35, 0.15
+
+        MDTextField:
+            mode: "fill"
+            fill_color: 0, 0, 1, .2
+            line_color_focus: 0, 0, 0.2, 1
+            color_mode: 'custom'
+            id: noItems
+            input_filter: "int"
+            font_size: (root.width ** 2 + root.height ** 2) / 13 ** 4
+            multiline: False
+            pos_hint: {"x": 0.45, "top": 0.7}
+            size_hint: 0.4, 0.15
+
+        MDFillRoundFlatIconButton:
+            icon: "logout"
+            pos_hint: {"x": 0.3, "y": 0.02}
+            size_hint: 0.3, 0.1
+            font_size: (root.width ** 2 + root.height ** 2) / 13 ** 4
+            text: "logout"
+            on_release:
+                root.logout()
+                root.manager.transition.direction = "down"
+
+        MDFillRoundFlatIconButton:
+            icon: "cloud-search"
+            pos_hint: {"x": 0.2, "y": 0.3}
+            size_hint: 0.6, 0.2
+            font_size: (root.width ** 2 + root.height ** 2) / 13 ** 4
+            text: "Submit"
+
+            on_release:
+                root.manager.transition.direction = "right"
+                root.gosenti()
+
+
+<SentiWindow>
+
+    searchI : searchI
+    a1 : a1
+    b1 : b1
+    c1 : c1
+    d1 : d1
+
+    FloatLayout:
+        canvas.before:
+            Color:
+                rgba: 0, 0, 1, .5
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        rows:6
+
+
+        MDLabel:
+            halign: "center"
+            id: searchI
+            text: "Search Item : "
+            pos_hint: {"x": 0.2, "top": 0.9}
+            size_hint: 0.50, 0.20
+            font_size: (root.width ** 2 + root.height ** 2) / 13 ** 4
+
+        MDLabel:
+            halign: "center"
+            id: a1
+            text: "Overall Sentiment : "
+            pos_hint: {"x": 0.2, "top": 0.8}
+            size_hint: 0.50, 0.15
+            font_size: (root.width ** 2 + root.height ** 2) / 14 ** 4
+
+
+
+        MDLabel:
+            id: b1
+            text: "Percentage of Positive tweets : "
+            pos_hint: {"x": 0.2, "top": 0.7}
+            size_hint: 0.50, 0.15
+            theme_text_color: "Custom"
+            text_color: 0.1, 0.4, 0, 1
+
+        MDIconButton:
+            icon: "emoticon"
+            pos_hint: {"x": 0.1, "top": 0.67}
+            theme_text_color: "Custom"
+            text_color: 0.1, 0.4, 0, 1
+
+        MDLabel:
+            id: c1
+            text: "Percentage of Negative tweets : "
+            pos_hint: {"x": 0.2, "top": 0.6}
+            size_hint: 0.50, 0.15
+            theme_text_color: "Custom"
+            text_color: 0.6, 0, 0, 1
+
+        MDIconButton:
+            icon: "emoticon-sad"
+            pos_hint: {"x": 0.1, "top": 0.57}
+            theme_text_color: "Custom"
+            text_color: 0.6, 0, 0, 1
+
+
+
+        MDLabel:
+            id: d1
+            text: "Percentage of Neutral tweets : "
+            pos_hint: {"x": 0.2, "top": 0.5}
+            size_hint: 0.50, 0.15
+            theme_text_color: "Custom"
+            text_color: 0.7, 0.4, 0.2, 1
+
+        MDIconButton:
+            icon: "emoticon-neutral"
+            pos_hint: {"x": 0.1, "top": 0.47}
+            theme_text_color: "Custom"
+            text_color: 0.7, 0.4, 0.2, 1
+
+        MDFillRoundFlatIconButton:
+            icon: "twitter-retweet"
+            pos_hint: {"x": 0.3, "top": 0.35}
+            size_hint: 0.3, 0.15
+            font_size: (root.width ** 2 + root.height ** 2) / 15 ** 4
+            text: "search again"
+            on_release:
+                root.gomain()
+                root.manager.transition.direction = "down"
+
+        MDFillRoundFlatIconButton:
+            icon: "logout"
+            pos_hint: {"x": 0.33, "top": 0.15}
+            size_hint: 0.25, 0.1
+            font_size: (root.width ** 2 + root.height ** 2) / 16 ** 4
+            text: "logout"
+            on_release:
+                root.logout()
+                root.manager.transition.direction = "down"
